@@ -58,3 +58,11 @@
 .product-info .details{font-size:15px;line-height:1.5;min-height:44px}
 
 .hero .hero-photo{background-image:url('assets/ruong-dua-toan-canh.jpg');background-position:center 68%}
+
+/* Catalog introduction and controls */
+#san-pham .eyebrow{font-size:12px}
+#san-pham h2{font-size:clamp(32px,3.4vw,46px)}
+#san-pham .section-heading p{font-size:16px;line-height:1.65}
+#san-pham .tabs button{font-size:clamp(13px,1.4vw,16px);padding:14px 10px;min-height:48px}
+#san-pham .search input{font-size:16px;min-height:48px}
+#san-pham .demo-note{font-size:14px;line-height:1.6}
