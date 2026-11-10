@@ -33,3 +33,20 @@
 .budget-inputs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px}
 .budget-inputs label{display:grid;gap:6px;font-weight:600}
 .budget-inputs input,.budget-inputs select{width:100%;min-height:44px;padding:8px;border:1px solid #829280;border-radius:5px;background:white;color:var(--ink)}
+
+/* Larger text for the homepage introduction and category strip. */
+.hero p{font-size:clamp(16px,1.35vw,19px);line-height:1.75}
+.hero-actions .button,.hero-actions .text-link{font-size:16px}
+.hero-bottom,.photo-label span{font-size:11px}
+.photo-label strong{font-size:23px}
+.benefits p{font-size:16px;line-height:1.4}
+.benefits small,.benefits>div>span{font-size:13px;line-height:1.5}
+
+@media(max-width:850px){
+  .photo-label{position:relative;inset:auto;width:fit-content;max-width:88%;margin:0 6% 25px}
+}
+@media(max-width:640px){
+  .hero .eyebrow,.hero-bottom{font-size:10px}
+  .photo-label strong{font-size:18px}
+  .benefits p{font-size:15px}
+}
