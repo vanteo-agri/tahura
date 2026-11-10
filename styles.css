@@ -50,3 +50,9 @@
   .photo-label strong{font-size:18px}
   .benefits p{font-size:15px}
 }
+
+/* Product card typography */
+.product-info > small{font-size:13px;line-height:1.5;letter-spacing:.08em}
+.product-info h3{font-size:clamp(21px,1.7vw,25px);line-height:1.35;overflow-wrap:anywhere}
+.product-info p{font-size:16px;line-height:1.65}
+.product-info .details{font-size:15px;line-height:1.5;min-height:44px}
