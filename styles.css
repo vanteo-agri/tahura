@@ -66,3 +66,30 @@
 #san-pham .tabs button{font-size:clamp(13px,1.4vw,16px);padding:14px 10px;min-height:48px}
 #san-pham .search input{font-size:16px;min-height:48px}
 #san-pham .demo-note{font-size:14px;line-height:1.6}
+
+
+.floating-contact {
+  position: fixed;
+  z-index: 10;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  display: flex;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.floating-contact a {
+  display: grid;
+  place-items: center;
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 24px;
+  box-shadow: 0 3px 14px #0003;
+}
+.floating-dealer { background: var(--lime); color: var(--green); }
+.floating-zalo { background: #005bc4; color: #fff; }
+.contact-dialog-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.contact-copy-status { margin: 8px 0 0; }
+#contact-form #form-status { font-size: 14px; }
+body { padding-bottom: calc(62px + env(safe-area-inset-bottom)); }
+
