@@ -20,7 +20,7 @@
   .menu{flex-shrink:0}
 }
 
-.story-budget{grid-column:1/-1;padding:clamp(18px,4vw,42px);background:#eef1e7;border:1px solid var(--line);border-radius:8px}
+.story-budget{width:min(90%,1440px);margin-inline:auto;padding:clamp(18px,4vw,42px);background:#eef1e7;border:1px solid var(--line);border-radius:8px}
 .story-budget h2{font-size:clamp(24px,3vw,38px);margin:12px 0}
 .story-budget p{line-height:1.7}
 .story-budget dl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:24px 0}
@@ -28,7 +28,7 @@
 .story-budget dd{margin:6px 0 0;font-weight:700}
 .story-budget summary{cursor:pointer;font-weight:600;padding:10px 0}
 .story-budget img{display:block;width:min(100%,740px);height:auto;margin-top:12px}
-@media(max-width:640px){.story-budget dl{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.story-budget{width:88%}.story-budget dl{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 .budget-inputs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px}
 .budget-inputs label{display:grid;gap:6px;font-weight:600}
