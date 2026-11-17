@@ -56,13 +56,18 @@ contactForm.addEventListener('submit', event => {
   if (!cropIssue.disabled && cropIssue.value) lines.push('Vấn đề cây trồng: ' + cropIssue.value);
   lines.push(message);
 
-  openDialog('Gửi yêu cầu qua Zalo', [
+  openZaloMessage('Gửi yêu cầu qua Zalo', lines.join('\n'));
+  formStatus.textContent = 'Yêu cầu chưa được gửi. Hãy hoàn tất thao tác trong Zalo.';
+});
+
+function openZaloMessage(heading, message) {
+  openDialog(heading, [
     'Yêu cầu chưa được gửi. Sao chép tin nhắn, mở Zalo TAHURA, dán vào cuộc trò chuyện và bấm Gửi.'
   ], false);
 
   const preview = document.createElement('textarea');
   preview.className = 'copy-content';
-  preview.value = lines.join('\n');
+  preview.value = message;
   preview.readOnly = true;
   preview.setAttribute('aria-label', 'Tin nhắn gửi TAHURA');
 
@@ -93,6 +98,13 @@ contactForm.addEventListener('submit', event => {
 
   actions.append(copy, zalo);
   content.append(preview, actions, copyStatus);
-  formStatus.textContent = 'Yêu cầu chưa được gửi. Hãy hoàn tất thao tác trong Zalo.';
+}
+
+document.querySelectorAll('[data-price-zalo]').forEach(link => {
+  link.addEventListener('click', event => {
+    event.preventDefault();
+    const name = link.closest('.product').querySelector('h3').textContent.trim();
+    openZaloMessage('Hỏi giá qua Zalo', `Xin chào TAHURA! Cho tôi hỏi giá sản phẩm ${name}. Xin cảm ơn!`);
+  });
 });
 
