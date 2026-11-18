@@ -1,33 +1,81 @@
-const budget = document.querySelector('.story-budget')
-const areaInput = budget.querySelector('#budget-area')
-const yieldInput = budget.querySelector('#budget-yield')
-const priceInput = budget.querySelector('#budget-price')
-const planInput = budget.querySelector('#budget-plan')
-const results = budget.querySelectorAll('dd')
-const status = budget.querySelector('#budget-status')
-const format = new Intl.NumberFormat('vi-VN', { maximumFractionDigits: 2 })
+(function () {
+  // Định mức chi phí gốc trên 1 công (đơn vị: triệu đồng)
+  const BASE_COSTS = {
+    giong: 1.68,
+    gian: 1.90,
+    phan: 4.90,
+    cong: 5.50
+  };
+  const TOTAL_BASE_COST = 13.98; // triệu đồng / công
 
-function updateBudget() {
-  const inputs = [areaInput, yieldInput, priceInput]
-  if (inputs.some(input => !input.value || !input.validity.valid)) {
-    results.forEach(result => { result.textContent = '—' })
-    status.textContent = 'Nhập diện tích từ 0,1 công và năng suất, giá bán từ 0 trở lên.'
-    return
+  const elCong = document.getElementById('input-cong');
+  const rangeCong = document.getElementById('range-cong');
+  const elGia = document.getElementById('input-gia');
+  const rangeGia = document.getElementById('range-gia');
+  const elNangSuat = document.getElementById('input-nangsuat');
+  const rangeNangSuat = document.getElementById('range-nangsuat');
+
+  function formatTrieu(val) {
+    return val.toLocaleString('vi-VN', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }) + ' triệu đ';
   }
 
-  const area = areaInput.valueAsNumber
-  const harvest = area * yieldInput.valueAsNumber * 1000
-  const revenue = harvest * priceInput.valueAsNumber
-  const trellis = planInput.value === 'new' ? 5700000 : 1900000
-  const labor = planInput.value === 'family' ? 0 : 5500000
-  const cost = area * (1680000 + trellis + 4900000 + labor)
+  function updateCalc() {
+    const cong = Math.max(0.1, parseFloat(elCong.value) || 1);
+    const gia = Math.max(0, parseFloat(elGia.value) || 0);
+    const nangSuat = Math.max(100, parseFloat(elNangSuat.value) || 4000);
 
-  results[0].textContent = format.format(revenue / 1000000) + ' triệu đồng'
-  results[1].textContent = format.format(cost / 1000000) + ' triệu đồng'
-  results[2].textContent = format.format((revenue - cost) / 1000000) + ' triệu đồng'
-  results[3].textContent = harvest ? format.format(Math.ceil(cost / harvest)) + ' đ/kg' : '—'
-  status.textContent = 'Sản lượng dự kiến ' + format.format(harvest / 1000) + ' tấn.'
-}
+    // Tính toán (đơn vị triệu đồng)
+    const tongSanLuongKg = cong * nangSuat;
+    const doanhThu = (tongSanLuongKg * gia) / 1000000;
+    const tongChiPhi = cong * TOTAL_BASE_COST;
+    const loiNhuan = doanhThu - tongChiPhi;
+    const giaHoaVon = Math.round((tongChiPhi * 1000000) / tongSanLuongKg);
 
-budget.querySelector('.budget-inputs').addEventListener('input', updateBudget)
-updateBudget()
+    // Cập nhật giao diện kết quả
+    document.getElementById('out-doanhthu').textContent = formatTrieu(doanhThu);
+    document.getElementById('out-chiphi').textContent = formatTrieu(tongChiPhi);
+    document.getElementById('out-hoavon').textContent = giaHoaVon.toLocaleString('vi-VN') + ' đ/kg';
+
+    const cardLoiNhuan = document.getElementById('card-loinhuan');
+    const labelLoiNhuan = document.getElementById('label-loinhuan');
+    const outLoiNhuan = document.getElementById('out-loinhuan');
+
+    if (loiNhuan >= 0) {
+      cardLoiNhuan.className = 'result-card highlight';
+      labelLoiNhuan.textContent = 'Lợi nhuận ròng dự kiến';
+      outLoiNhuan.textContent = formatTrieu(loiNhuan);
+    } else {
+      cardLoiNhuan.className = 'result-card loss';
+      labelLoiNhuan.textContent = 'Ước tính lỗ';
+      outLoiNhuan.textContent = formatTrieu(Math.abs(loiNhuan));
+    }
+
+    // Cập nhật bảng chi tiết
+    document.getElementById('detail-cong').textContent = cong.toLocaleString('vi-VN');
+    document.getElementById('cost-giong').textContent = formatTrieu(cong * BASE_COSTS.giong);
+    document.getElementById('cost-gian').textContent = formatTrieu(cong * BASE_COSTS.gian);
+    document.getElementById('cost-phan').textContent = formatTrieu(cong * BASE_COSTS.phan);
+    document.getElementById('cost-cong').textContent = formatTrieu(cong * BASE_COSTS.cong);
+  }
+
+  // Đồng bộ ô nhập số và thanh trượt
+  function bindSync(inputEl, rangeEl) {
+    inputEl.addEventListener('input', () => {
+      rangeEl.value = inputEl.value;
+      updateCalc();
+    });
+    rangeEl.addEventListener('input', () => {
+      inputEl.value = rangeEl.value;
+      updateCalc();
+    });
+  }
+
+  bindSync(elCong, rangeCong);
+  bindSync(elGia, rangeGia);
+  bindSync(elNangSuat, rangeNangSuat);
+
+  updateCalc();
+})();

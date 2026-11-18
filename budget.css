@@ -1,0 +1,171 @@
+.tahura-calc-section {
+  background: #f4f8f4;
+  border: 1px solid #d5e5d6;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 32px auto;
+  width: calc(100% - 32px);
+  max-width: 960px;
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #162b18;
+}
+.tahura-calc-badge {
+  display: inline-block;
+  background: #1b6b2b;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+.tahura-calc-section h2 {
+  margin: 0 0 8px 0;
+  font-size: 26px;
+  color: #0f3d19;
+}
+.tahura-calc-desc {
+  margin: 0 0 20px 0;
+  font-size: 15px;
+  color: #3d5240;
+  line-height: 1.5;
+}
+/* Khu vực nhập liệu */
+.tahura-calc-section .calc-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 16px;
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid #dce8dd;
+  margin-bottom: 20px;
+}
+.tahura-calc-section .control-group label {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #1e3a21;
+}
+.tahura-calc-section .input-wrap {
+  display: flex;
+  align-items: center;
+  border: 2px solid #b8d4ba;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fdfefd;
+}
+.tahura-calc-section .input-wrap:focus-within {
+  border-color: #1b6b2b;
+}
+.tahura-calc-section .input-wrap input {
+  width: 100%;
+  min-width: 0;
+  border: none;
+  padding: 10px 12px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f3d19;
+  outline: none;
+  background: transparent;
+}
+.tahura-calc-section .input-wrap span {
+  padding: 0 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4f6b52;
+  white-space: nowrap;
+  background: #eef5ef;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+}
+.tahura-calc-section .range-slider {
+  width: 100%;
+  margin-top: 8px;
+  accent-color: #1b6b2b;
+  cursor: pointer;
+}
+/* Bảng kết quả 4 ô */
+.tahura-calc-section .calc-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+  gap: 12px;
+  margin: 0 0 18px 0;
+}
+.tahura-calc-section .result-card {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #dce8dd;
+}
+.tahura-calc-section .result-card.highlight {
+  background: #1b6b2b;
+  color: #ffffff;
+  border-color: #1b6b2b;
+}
+.tahura-calc-section .result-card.loss {
+  background: #b91c1c;
+  color: #ffffff;
+  border-color: #b91c1c;
+}
+.tahura-calc-section .result-card dt {
+  font-size: 13px;
+  opacity: 0.85;
+  margin-bottom: 4px;
+}
+.tahura-calc-section .result-card dd {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+}
+/* Chi tiết chi phí */
+.tahura-calc-section .cost-breakdown {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #dce8dd;
+  font-size: 14px;
+}
+.tahura-calc-section .cost-breakdown summary {
+  font-weight: 700;
+  color: #1b6b2b;
+  cursor: pointer;
+  user-select: none;
+}
+.tahura-calc-section .cost-list {
+  list-style: none;
+  padding: 12px 0 0 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+.tahura-calc-section .cost-list li {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  border-bottom: 1px dashed #e2ece3;
+  padding-bottom: 6px;
+}
+.tahura-calc-section .calc-actions {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+.tahura-calc-section .btn-zalo-calc {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #0068ff;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 16px;
+  border-radius: 8px;
+}
