@@ -87,7 +87,15 @@
   box-shadow: 0 3px 14px #0003;
 }
 .floating-dealer { background: var(--lime); color: var(--green); }
-.floating-zalo { background: #005bc4; color: #fff; }
+.floating-contact .floating-zalo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  white-space: nowrap;
+  background: #005bc4;
+  color: #fff;
+}
 .contact-dialog-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
 .contact-copy-status { margin: 8px 0 0; }
 #contact-form #form-status { font-size: 14px; }
