@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tính chi phí, doanh thu, lợi nhuận và giá hòa vốn khi trồng dưa leo tại miền Tây.">
+  <title>Dự toán trồng dưa leo miền Tây | TAHURA</title>
+  <link rel="stylesheet" href="styles.css?v=ruong-dua-ro-net">
+  <style>
+    .about-header{height:auto;min-height:78px;gap:8px}
+    .about-home{font-weight:600;padding:12px 0}
+    .about-banner{background:var(--green);color:white;padding:52px 6%}
+    .about-banner h1{max-width:960px;font-size:clamp(32px,5vw,56px);letter-spacing:-.035em;margin:0}
+  </style>
+  <link rel="stylesheet" href="budget.css">
+  <script src="budget.js?v=mac-dinh-5000-3500" defer></script>
+</head>
+<body>
+  <header class="about-header">
+    <a class="logo-window" href="./" aria-label="TAHURA trang chủ"><img src="assets/tahura-logo.png" alt="TAHURA"></a>
+    <a class="about-home" href="./">← Trang chủ</a>
+  </header>
+  <main>
+    <div class="about-banner"><h1 id="du-toan">Dự toán trồng dưa leo miền Tây</h1></div>
+    <section id="du-toan-canh-tac" class="tahura-calc-section" aria-labelledby="du-toan">
+      <p class="tahura-calc-desc">
+        Nhập diện tích (1 công = 1.000 m²) và giá bán dự kiến tại ruộng để tính nhanh chi phí và lợi nhuận. 
+        Mức chuẩn tham khảo: năng suất <strong>3,5 tấn/công</strong>, chi phí giàn &amp; bạt chia đều cho 3 vụ.
+      </p>
+
+      <!-- Khu vực nhập thông số -->
+      <div class="calc-controls">
+        <div class="control-group">
+          <label for="input-cong">Diện tích canh tác (Công tầm nhỏ)</label>
+          <div class="input-wrap">
+            <input type="number" id="input-cong" value="1" min="0.5" max="100" step="0.5">
+            <span>công (1.000m²)</span>
+          </div>
+          <input type="range" id="range-cong" aria-label="Điều chỉnh diện tích canh tác" class="range-slider" min="1" max="20" step="0.5" value="1">
+        </div>
+
+        <div class="control-group">
+          <label for="input-gia">Giá bán tại ruộng</label>
+          <div class="input-wrap">
+            <input type="number" id="input-gia" value="5000" min="1000" max="50000" step="500">
+            <span>đồng / kg</span>
+          </div>
+          <input type="range" id="range-gia" aria-label="Điều chỉnh giá bán tại ruộng" class="range-slider" min="3000" max="15000" step="500" value="5000">
+        </div>
+
+        <div class="control-group">
+          <label for="input-nangsuat">Năng suất dự kiến / công</label>
+          <div class="input-wrap">
+            <input type="number" id="input-nangsuat" value="3500" min="1000" max="10000" step="100">
+            <span>kg / công</span>
+          </div>
+          <input type="range" id="range-nangsuat" aria-label="Điều chỉnh năng suất dự kiến" class="range-slider" min="2500" max="6000" step="100" value="3500">
+        </div>
+      </div>
+
+      <!-- Kết quả tính toán -->
+      <dl class="calc-results">
+        <div class="result-card">
+          <dt>Tổng doanh thu</dt>
+          <dd id="out-doanhthu">17,50 triệu đ</dd>
+        </div>
+        <div class="result-card">
+          <dt>Tổng chi phí đầu tư</dt>
+          <dd id="out-chiphi">13,98 triệu đ</dd>
+        </div>
+        <div class="result-card highlight" id="card-loinhuan">
+          <dt id="label-loinhuan">Lợi nhuận ròng</dt>
+          <dd id="out-loinhuan">3,52 triệu đ</dd>
+        </div>
+        <div class="result-card">
+          <dt>Giá hòa vốn</dt>
+          <dd id="out-hoavon">3.994 đ/kg</dd>
+        </div>
+      </dl>
+
+      <!-- Bảng phân bổ chi phí chi tiết -->
+      <details class="cost-breakdown" open>
+        <summary>Chi tiết phân bổ chi phí cho <span id="detail-cong">1</span> công đất</summary>
+        <ul class="cost-list">
+          <li><span>1. Hạt giống &amp; làm đất:</span> <strong id="cost-giong">1,68 triệu đ</strong></li>
+          <li><span>2. Giàn &amp; bạt phủ (khấu hao 3 vụ):</span> <strong id="cost-gian">1,90 triệu đ</strong></li>
+          <li><span>3. Phân bón &amp; thuốc BVTV:</span> <strong id="cost-phan">4,90 triệu đ</strong></li>
+          <li><span>4. Nhân công chăm sóc &amp; thu hái:</span> <strong id="cost-cong">5,50 triệu đ</strong></li>
+        </ul>
+        <div style="margin-top: 12px;">
+          <a href="assets/du-toan-dua-leo.png" target="_blank" rel="noopener" style="color: #1b6b2b; font-weight: 600;">
+            Xem biểu đồ gốc của TAHURA ↗
+          </a>
+        </div>
+      </details>
+
+      <div class="calc-actions">
+        <a id="btn-zalo-share" class="btn-zalo-calc" href="https://zalo.me/84877223939" target="_blank" rel="noopener noreferrer">
+          Tư vấn gói vật tư cho dự toán này qua Zalo ↗
+        </a>
+      </div>
+
+    </section>
+  </main>
+</body>
+</html>
