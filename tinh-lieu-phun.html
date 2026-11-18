@@ -61,6 +61,7 @@
     const form = document.querySelector('#spray-form');
     const result = document.querySelector('#spray-result');
     const formatDose = new Intl.NumberFormat('vi-VN', { maximumSignificantDigits: 8 });
+    const formatMl = new Intl.NumberFormat('vi-VN', { maximumFractionDigits: 2 });
     const waterPattern = /^(\d+(?:[.,]\d+)?)(?:\s*[-–—]\s*(\d+(?:[.,]\d+)?))?$/;
 
     form.addEventListener('input', () => { result.textContent = ''; });
@@ -82,18 +83,23 @@
         return;
       }
 
-      const low = (dose / maximum) * 25;
-      const high = (dose / minimum) * 25;
+      const inputUnit = form.elements.unit.value;
+      const outputUnit = inputUnit === 'g' ? 'g' : 'ml';
+      const conversion = inputUnit === 'lít' ? 1000 : 1;
+      const low = (dose / maximum) * 25 * conversion;
+      const high = (dose / minimum) * 25 * conversion;
       if (!Number.isFinite(high) || low <= 0) {
         result.textContent = 'Giá trị nằm ngoài phạm vi tính toán.';
         return;
       }
 
-      const unit = form.elements.unit.value;
-      const amount = minimum === maximum
-        ? formatDose.format(high)
-        : formatDose.format(low) + '–' + formatDose.format(high);
-      result.textContent = amount + ' ' + unit + ' cho 25 lít nước.';
+      const format = value => outputUnit === 'ml' && value >= 0.01
+        ? formatMl.format(value)
+        : formatDose.format(value);
+      const lower = format(low);
+      const upper = format(high);
+      const amount = lower === upper ? upper : lower + '–' + upper;
+      result.textContent = amount + ' ' + outputUnit + ' cho 25 lít nước.';
     });
   </script>
 </body>
