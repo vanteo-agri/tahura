@@ -57,12 +57,6 @@ contactForm.addEventListener('input', () => {
   messageField.setCustomValidity('');
   formStatus.textContent = defaultStatus;
 });
-document.querySelector('.floating-dealer').addEventListener('click', () => {
-  interestField.value = 'Đăng ký đại lý';
-  updateContactFields();
-  messageField.focus({preventScroll: true});
-});
-
 contactForm.addEventListener('submit', event => {
   event.preventDefault();
   const message = messageField.value.trim();
