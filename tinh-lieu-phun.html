@@ -29,7 +29,7 @@
     .spray-banner-products {
       position: relative;
       width: 100%;
-      max-width: 460px;
+      max-width: 230px;
       aspect-ratio: 900 / 795;
       overflow: hidden;
       border-radius: 12px;
@@ -45,8 +45,8 @@
       height: auto;
     }
     @media (max-width: 700px) {
-      .spray-banner { grid-template-columns: 1fr; padding-block: 28px; }
-      .spray-banner-products { justify-self: start; }
+      .spray-banner { grid-template-columns: 1fr; gap: 16px; padding-block: 28px; }
+      .spray-banner-products { max-width: 205px; justify-self: start; }
     }
   </style>
   <link rel="stylesheet" href="budget.css">
