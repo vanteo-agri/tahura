@@ -101,3 +101,20 @@
 #contact-form #form-status { font-size: 14px; }
 body { padding-bottom: calc(62px + env(safe-area-inset-bottom)); }
 
+
+#product-photo-dialog {
+  width: fit-content;
+  max-width: 94vw;
+  max-height: 92vh;
+  max-height: 92dvh;
+  padding: 46px 12px 12px;
+  background: #12271d;
+}
+#product-photo-dialog .close-dialog { color: #fff; }
+#product-photo-dialog img {
+  display: block;
+  max-width: min(1200px, calc(94vw - 24px));
+  max-height: calc(92vh - 58px);
+  max-height: calc(92dvh - 58px);
+  object-fit: contain;
+}

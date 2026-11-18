@@ -1,6 +1,6 @@
 const menu=document.querySelector('.menu');const nav=document.querySelector('nav');menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');}));
 let filter='all';const search=document.querySelector('.search input');function normalize(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').toLowerCase();}function filterProducts(){let count=0;document.querySelectorAll('.product').forEach(card=>{const visible=(filter==='all'||card.dataset.category===filter)&&normalize(card.dataset.name).includes(normalize(search.value.trim()));card.hidden=!visible;if(visible)count++;});document.querySelector('#no-results').hidden=count>0;}document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{filter=button.dataset.filter;document.querySelectorAll('[data-filter]').forEach(b=>{b.classList.toggle('selected',b===button);b.setAttribute('aria-pressed',String(b===button));});filterProducts();}));document.querySelector('[data-filter="all"]').setAttribute('aria-pressed','true');search.addEventListener('input',filterProducts);
-const dialog=document.querySelector('dialog');const title=document.querySelector('#dialog-title');const content=document.querySelector('#dialog-content');function openDialog(heading,paragraphs){title.textContent=heading;content.replaceChildren();paragraphs.forEach(text=>{const p=document.createElement('p');p.textContent=text;content.append(p);});if(!dialog.open) dialog.showModal();dialog.scrollTop=0;}document.querySelector('.close-dialog').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});document.querySelectorAll('[data-product]').forEach(button=>button.addEventListener('click',()=>{const name=button.dataset.product;document.querySelector('#interest').value=button.closest('.product').dataset.category==='fertilizer'?'Phân bón':'Hạt giống';updateContactFields();document.querySelector('#message').value=`Tôi muốn được tư vấn về ${name.toLowerCase()}. Cây trồng và diện tích dự kiến của tôi: `;const info={
+const dialog=document.querySelector('#detail-dialog');const title=document.querySelector('#dialog-title');const content=document.querySelector('#dialog-content');function openDialog(heading,paragraphs){title.textContent=heading;content.replaceChildren();paragraphs.forEach(text=>{const p=document.createElement('p');p.textContent=text;content.append(p);});if(!dialog.open) dialog.showModal();dialog.scrollTop=0;}document.querySelector('.close-dialog').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});document.querySelectorAll('[data-product]').forEach(button=>button.addEventListener('click',()=>{const name=button.dataset.product;document.querySelector('#interest').value=button.closest('.product').dataset.category==='fertilizer'?'Phân bón':'Hạt giống';updateContactFields();document.querySelector('#message').value=`Tôi muốn được tư vấn về ${name.toLowerCase()}. Cây trồng và diện tích dự kiến của tôi: `;const info={
   "Cải thìa F1 24":[
     "Đặc tính giống: Cây sinh trưởng khỏe, chịu nhiệt, chịu mưa, kháng bệnh thối nhũn tốt.",
     "Cây có độ đồng đều cao, cây xanh, bẹ dày, củ tròn, nặng ký.",
@@ -114,3 +114,18 @@ function openZaloMessage(heading, message) {
   content.append(preview, actions, copyStatus);
 }
 
+
+const photoDialog = document.querySelector('#product-photo-dialog');
+const enlargedPhoto = photoDialog.querySelector('img');
+
+content.addEventListener('click', event => {
+  const link = event.target.closest('.product-gallery a');
+  if (!link || event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+  event.preventDefault();
+  enlargedPhoto.alt = link.querySelector('img').alt;
+  enlargedPhoto.src = link.href;
+  photoDialog.showModal();
+});
+
+photoDialog.addEventListener('close', () => enlargedPhoto.removeAttribute('src'));
