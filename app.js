@@ -117,15 +117,41 @@ function openZaloMessage(heading, message) {
 
 const photoDialog = document.querySelector('#product-photo-dialog');
 const enlargedPhoto = photoDialog.querySelector('img');
+const photoNavigation = photoDialog.querySelector('.photo-navigation');
+const photoStatus = photoNavigation.querySelector('[role="status"]');
+let galleryLinks = [];
+let photoIndex = 0;
+
+function showProductPhoto(index) {
+  photoIndex = (index + galleryLinks.length) % galleryLinks.length;
+  const link = galleryLinks[photoIndex];
+  enlargedPhoto.alt = link.querySelector('img').alt;
+  enlargedPhoto.src = link.href;
+  photoStatus.textContent = (photoIndex + 1) + ' / ' + galleryLinks.length;
+}
 
 content.addEventListener('click', event => {
   const link = event.target.closest('.product-gallery a');
   if (!link || event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
 
   event.preventDefault();
-  enlargedPhoto.alt = link.querySelector('img').alt;
-  enlargedPhoto.src = link.href;
+  galleryLinks = Array.from(link.closest('.product-gallery').querySelectorAll('a'));
+  photoNavigation.hidden = galleryLinks.length < 2;
+  showProductPhoto(galleryLinks.indexOf(link));
   photoDialog.showModal();
 });
 
-photoDialog.addEventListener('close', () => enlargedPhoto.removeAttribute('src'));
+photoNavigation.querySelectorAll('[data-photo-step]').forEach(button => {
+  button.addEventListener('click', () => showProductPhoto(photoIndex + Number(button.dataset.photoStep)));
+});
+
+photoDialog.addEventListener('keydown', event => {
+  if (galleryLinks.length < 2 || !['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+  event.preventDefault();
+  showProductPhoto(photoIndex + (event.key === 'ArrowLeft' ? -1 : 1));
+});
+
+photoDialog.addEventListener('close', () => {
+  enlargedPhoto.removeAttribute('src');
+  galleryLinks = [];
+});

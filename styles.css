@@ -114,7 +114,27 @@ body { padding-bottom: calc(62px + env(safe-area-inset-bottom)); }
 #product-photo-dialog img {
   display: block;
   max-width: min(1200px, calc(94vw - 24px));
-  max-height: calc(92vh - 58px);
-  max-height: calc(92dvh - 58px);
+  max-height: calc(92vh - 116px);
+  max-height: calc(92dvh - 116px);
   object-fit: contain;
 }
+
+#product-photo-dialog img { margin-inline: auto; }
+.photo-navigation:not([hidden]) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 10px;
+  color: #fff;
+}
+.photo-navigation button {
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid #ffffff60;
+  border-radius: 8px;
+  background: #ffffff18;
+  color: #fff;
+  font-size: 22px;
+}
+.photo-navigation button:hover { background: #ffffff34; }
