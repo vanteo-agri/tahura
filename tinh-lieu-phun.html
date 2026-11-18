@@ -11,6 +11,15 @@
     .about-home{font-weight:600;padding:12px 0}
     .about-banner{background:var(--green);color:white;padding:52px 6%}
     .about-banner h1{max-width:960px;font-size:clamp(32px,5vw,56px);letter-spacing:-.035em;margin:0}
+    #spray-unit {
+      color: #0f3d19;
+      background: #fdfefd;
+      border: 2px solid #b8d4ba;
+      border-radius: 8px;
+      font-size: 16px;
+      min-height: 48px;
+    }
+    #spray-unit option { color: #0f3d19; background: #fff; }
   </style>
   <link rel="stylesheet" href="budget.css">
 </head>
@@ -34,11 +43,13 @@
             <select id="spray-unit" name="unit">
               <option value="ml">Mililít (ml)</option>
               <option value="g">Gam (g)</option>
+              <option value="lít">Lít (L)</option>
             </select>
           </div>
           <div class="control-group">
             <label for="spray-water">Lượng nước ghi trên nhãn (lít)</label>
-            <div class="input-wrap"><input id="spray-water" name="water" type="number" inputmode="decimal" min="0" step="any" required></div>
+            <div class="input-wrap"><input id="spray-water" name="water" type="text" placeholder="Ví dụ: 500 - 600" aria-describedby="spray-water-hint" required></div>
+            <small id="spray-water-hint">Nhập một số hoặc một khoảng, ví dụ 500 hoặc 500 - 600.</small>
           </div>
         </div>
         <button class="button" type="submit">Tính liều cho 25 lít</button>
@@ -50,20 +61,39 @@
     const form = document.querySelector('#spray-form');
     const result = document.querySelector('#spray-result');
     const formatDose = new Intl.NumberFormat('vi-VN', { maximumSignificantDigits: 8 });
+    const waterPattern = /^(\d+(?:[.,]\d+)?)(?:\s*[-–—]\s*(\d+(?:[.,]\d+)?))?$/;
 
     form.addEventListener('input', () => { result.textContent = ''; });
+    form.elements.unit.addEventListener('change', () => { result.textContent = ''; });
     form.addEventListener('submit', event => {
       event.preventDefault();
       const dose = form.elements.dose.valueAsNumber;
-      const water = form.elements.water.valueAsNumber;
-      const amount = (dose / water) * 25;
+      const waterInput = form.elements.water.value.trim();
+      const match = waterInput.match(waterPattern);
+      const minimum = Number(match?.[1]?.replace(',', '.'));
+      const maximum = Number((match?.[2] ?? match?.[1])?.replace(',', '.'));
 
-      if (!Number.isFinite(amount) || amount <= 0) {
-        result.textContent = 'Hãy nhập liều và lượng nước lớn hơn 0.';
+      if (!Number.isFinite(dose) || dose <= 0) {
+        result.textContent = 'Hãy nhập liều lớn hơn 0.';
+        return;
+      }
+      if (!Number.isFinite(minimum) || !Number.isFinite(maximum) || minimum <= 0 || maximum < minimum) {
+        result.textContent = 'Hãy nhập lượng nước lớn hơn 0, ví dụ 500 hoặc 500 - 600 (số nhỏ trước).';
         return;
       }
 
-      result.textContent = formatDose.format(amount) + ' ' + form.elements.unit.value + ' cho 25 lít nước.';
+      const low = (dose / maximum) * 25;
+      const high = (dose / minimum) * 25;
+      if (!Number.isFinite(high) || low <= 0) {
+        result.textContent = 'Giá trị nằm ngoài phạm vi tính toán.';
+        return;
+      }
+
+      const unit = form.elements.unit.value;
+      const amount = minimum === maximum
+        ? formatDose.format(high)
+        : formatDose.format(low) + '–' + formatDose.format(high);
+      result.textContent = amount + ' ' + unit + ' cho 25 lít nước.';
     });
   </script>
 </body>
