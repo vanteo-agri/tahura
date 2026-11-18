@@ -27,21 +27,22 @@
       gap: 24px;
     }
     .spray-banner-products {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: clamp(6px, 1vw, 14px);
+      position: relative;
       width: 100%;
-      max-width: 620px;
+      max-width: 460px;
+      aspect-ratio: 900 / 795;
+      overflow: hidden;
+      border-radius: 12px;
       justify-self: end;
     }
     .spray-banner-products img {
+      position: absolute;
+      /* Cắt bớt nền quanh ba chai, theo khung 900 × 795 của ảnh gốc. */
+      inset: -6.92% auto auto -16.67%;
       display: block;
-      width: 100%;
+      width: 133.33%;
+      max-width: none;
       height: auto;
-      aspect-ratio: 4 / 5;
-      object-fit: contain;
-      background: #fff;
-      border-radius: 8px;
     }
     @media (max-width: 700px) {
       .spray-banner { grid-template-columns: 1fr; padding-block: 28px; }
@@ -59,10 +60,7 @@
     <div class="about-banner spray-banner">
       <h1 id="spray-title">Tính lượng thuốc</h1>
       <div class="spray-banner-products">
-        <img src="assets/tinh-luong-thuoc-terron-a2.jpg" width="540" height="720" alt="Terron A2" decoding="async">
-        <img src="assets/tinh-luong-thuoc-duong-chat-xanh.jpg" width="645" height="720" alt="Dưỡng Chất Xanh" decoding="async">
-        <img src="assets/tinh-luong-thuoc-terramin.jpg" width="346" height="720" alt="Terramin Seaweed" decoding="async">
-        <img src="assets/tinh-luong-thuoc-terrax-b3.jpg" width="540" height="720" alt="Terrax B3" decoding="async">
+        <img src="assets/tinh-luong-thuoc-bo-san-pham.jpg" width="1000" height="747" alt="Ba chai Dưỡng Chất Xanh, Terramin Seaweed và Terron A2" decoding="async">
       </div>
     </div>
     <section class="tahura-calc-section" aria-labelledby="spray-title">
