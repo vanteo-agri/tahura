@@ -20,6 +20,33 @@
       min-height: 48px;
     }
     #spray-unit option { color: #0f3d19; background: #fff; }
+    .spray-banner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+      align-items: center;
+      gap: 24px;
+    }
+    .spray-banner-products {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(6px, 1vw, 14px);
+      width: 100%;
+      max-width: 620px;
+      justify-self: end;
+    }
+    .spray-banner-products img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 5;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 8px;
+    }
+    @media (max-width: 700px) {
+      .spray-banner { grid-template-columns: 1fr; padding-block: 28px; }
+      .spray-banner-products { justify-self: start; }
+    }
   </style>
   <link rel="stylesheet" href="budget.css">
 </head>
@@ -29,7 +56,15 @@
     <a class="about-home" href="./">← Trang chủ</a>
   </header>
   <main>
-    <div class="about-banner"><h1 id="spray-title">Tính lượng thuốc</h1></div>
+    <div class="about-banner spray-banner">
+      <h1 id="spray-title">Tính lượng thuốc</h1>
+      <div class="spray-banner-products">
+        <img src="assets/tinh-luong-thuoc-terron-a2.jpg" width="540" height="720" alt="Terron A2" decoding="async">
+        <img src="assets/tinh-luong-thuoc-duong-chat-xanh.jpg" width="645" height="720" alt="Dưỡng Chất Xanh" decoding="async">
+        <img src="assets/tinh-luong-thuoc-terramin.jpg" width="346" height="720" alt="Terramin Seaweed" decoding="async">
+        <img src="assets/tinh-luong-thuoc-terrax-b3.jpg" width="540" height="720" alt="Terrax B3" decoding="async">
+      </div>
+    </div>
     <section class="tahura-calc-section" aria-labelledby="spray-title">
       <p class="tahura-calc-desc">Nhập liều pha và lượng nước tương ứng theo nhãn sản phẩm. Dùng công cụ cho liều ghi theo thể tích nước, rồi pha và sử dụng theo hướng dẫn trên nhãn.</p>
       <form id="spray-form">
