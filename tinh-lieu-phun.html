@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Quy đổi liều pha ghi trên nhãn sản phẩm sang bình phun 25 lít.">
+  <title>Tính liều phun bình 25 lít | TAHURA</title>
+  <link rel="stylesheet" href="styles.css?v=ruong-dua-ro-net">
+  <style>
+    .about-header{height:auto;min-height:78px;gap:8px}
+    .about-home{font-weight:600;padding:12px 0}
+    .about-banner{background:var(--green);color:white;padding:52px 6%}
+    .about-banner h1{max-width:960px;font-size:clamp(32px,5vw,56px);letter-spacing:-.035em;margin:0}
+  </style>
+  <link rel="stylesheet" href="budget.css">
+</head>
+<body>
+  <header class="about-header">
+    <a class="logo-window" href="./" aria-label="TAHURA trang chủ"><img src="assets/tahura-logo.png" alt="TAHURA"></a>
+    <a class="about-home" href="./">← Trang chủ</a>
+  </header>
+  <main>
+    <div class="about-banner"><h1 id="spray-title">Tính liều phun bình 25 lít</h1></div>
+    <section class="tahura-calc-section" aria-labelledby="spray-title">
+      <p class="tahura-calc-desc">Nhập liều pha và lượng nước tương ứng theo nhãn sản phẩm. Dùng công cụ cho liều ghi theo thể tích nước, rồi pha và sử dụng theo hướng dẫn trên nhãn.</p>
+      <form id="spray-form">
+        <div class="calc-controls">
+          <div class="control-group">
+            <label for="spray-dose">Liều ghi trên nhãn</label>
+            <div class="input-wrap"><input id="spray-dose" name="dose" type="number" inputmode="decimal" min="0" step="any" required></div>
+          </div>
+          <div class="control-group">
+            <label for="spray-unit">Đơn vị của liều</label>
+            <select id="spray-unit" name="unit">
+              <option value="ml">Mililít (ml)</option>
+              <option value="g">Gam (g)</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <label for="spray-water">Lượng nước ghi trên nhãn (lít)</label>
+            <div class="input-wrap"><input id="spray-water" name="water" type="number" inputmode="decimal" min="0" step="any" required></div>
+          </div>
+        </div>
+        <button class="button" type="submit">Tính liều cho 25 lít</button>
+        <p id="spray-result" role="status"></p>
+      </form>
+    </section>
+  </main>
+  <script>
+    const form = document.querySelector('#spray-form');
+    const result = document.querySelector('#spray-result');
+    const formatDose = new Intl.NumberFormat('vi-VN', { maximumSignificantDigits: 8 });
+
+    form.addEventListener('input', () => { result.textContent = ''; });
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      const dose = form.elements.dose.valueAsNumber;
+      const water = form.elements.water.valueAsNumber;
+      const amount = (dose / water) * 25;
+
+      if (!Number.isFinite(amount) || amount <= 0) {
+        result.textContent = 'Hãy nhập liều và lượng nước lớn hơn 0.';
+        return;
+      }
+
+      result.textContent = formatDose.format(amount) + ' ' + form.elements.unit.value + ' cho 25 lít nước.';
+    });
+  </script>
+</body>
+</html>
