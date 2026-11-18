@@ -25,7 +25,7 @@
   function updateCalc() {
     const cong = Math.max(0.1, parseFloat(elCong.value) || 1);
     const gia = Math.max(0, parseFloat(elGia.value) || 0);
-    const nangSuat = Math.max(100, parseFloat(elNangSuat.value) || 4000);
+    const nangSuat = Math.max(100, parseFloat(elNangSuat.value) || 3500);
 
     // Tính toán (đơn vị triệu đồng)
     const tongSanLuongKg = cong * nangSuat;
