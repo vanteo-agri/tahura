@@ -81,6 +81,7 @@
             <select id="spray-unit" name="unit">
               <option value="ml">Mililít (ml)</option>
               <option value="g">Gam (g)</option>
+              <option value="kg">Kilogram (kg)</option>
               <option value="lít">Lít (L)</option>
             </select>
           </div>
@@ -122,8 +123,8 @@
       }
 
       const inputUnit = form.elements.unit.value;
-      const outputUnit = inputUnit === 'g' ? 'g' : 'ml';
-      const conversion = inputUnit === 'lít' ? 1000 : 1;
+      const outputUnit = ['g', 'kg'].includes(inputUnit) ? 'g' : 'ml';
+      const conversion = ['lít', 'kg'].includes(inputUnit) ? 1000 : 1;
       const low = (dose / maximum) * 25 * conversion;
       const high = (dose / minimum) * 25 * conversion;
       if (!Number.isFinite(high) || low <= 0) {
