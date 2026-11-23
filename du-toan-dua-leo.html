@@ -13,7 +13,7 @@
     .about-banner h1{max-width:960px;font-size:clamp(32px,5vw,56px);letter-spacing:-.035em;margin:0}
   </style>
   <link rel="stylesheet" href="budget.css">
-  <script src="budget.js?v=mac-dinh-5000-3500" defer></script>
+  <script src="budget.js?v=mac-dinh-5000-3000" defer></script>
 </head>
 <body>
   <header class="about-header">
@@ -25,7 +25,7 @@
     <section id="du-toan-canh-tac" class="tahura-calc-section" aria-labelledby="du-toan">
       <p class="tahura-calc-desc">
         Nhập diện tích (1 công = 1.000 m²) và giá bán dự kiến tại ruộng để tính nhanh chi phí và lợi nhuận. 
-        Mức chuẩn tham khảo: năng suất <strong>3,5 tấn/công</strong>, chi phí giàn &amp; bạt chia đều cho 3 vụ.
+        Mức chuẩn tham khảo: năng suất <strong>3 tấn/công</strong>, chi phí giàn &amp; bạt chia đều cho 3 vụ.
       </p>
 
       <!-- Khu vực nhập thông số -->
@@ -51,10 +51,10 @@
         <div class="control-group">
           <label for="input-nangsuat">Năng suất dự kiến / công</label>
           <div class="input-wrap">
-            <input type="number" id="input-nangsuat" value="3500" min="1000" max="10000" step="100">
+            <input type="number" id="input-nangsuat" value="3000" min="1000" max="10000" step="100">
             <span>kg / công</span>
           </div>
-          <input type="range" id="range-nangsuat" aria-label="Điều chỉnh năng suất dự kiến" class="range-slider" min="2500" max="6000" step="100" value="3500">
+          <input type="range" id="range-nangsuat" aria-label="Điều chỉnh năng suất dự kiến" class="range-slider" min="2500" max="6000" step="100" value="3000">
         </div>
       </div>
 
@@ -62,7 +62,7 @@
       <dl class="calc-results">
         <div class="result-card">
           <dt>Tổng doanh thu</dt>
-          <dd id="out-doanhthu">17,50 triệu đ</dd>
+          <dd id="out-doanhthu">15,00 triệu đ</dd>
         </div>
         <div class="result-card">
           <dt>Tổng chi phí đầu tư</dt>
@@ -70,11 +70,11 @@
         </div>
         <div class="result-card highlight" id="card-loinhuan">
           <dt id="label-loinhuan">Lợi nhuận ròng</dt>
-          <dd id="out-loinhuan">3,52 triệu đ</dd>
+          <dd id="out-loinhuan">1,02 triệu đ</dd>
         </div>
         <div class="result-card">
           <dt>Giá hòa vốn</dt>
-          <dd id="out-hoavon">3.994 đ/kg</dd>
+          <dd id="out-hoavon">4.660 đ/kg</dd>
         </div>
       </dl>
 
