@@ -144,6 +144,21 @@
     </style>
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <style>.article-back{display:inline-block;color:#1b5e20;font-weight:600;text-decoration:none;margin:8px 0 16px}.article-back:hover{text-decoration:underline}h2::before{flex-shrink:0} .table-responsive table{min-width:620px}</style>
+<style>
+.disease-photo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:20px 0 28px}
+.disease-photo-grid figure{margin:0;min-width:0}
+.disease-photo-open{display:block;width:100%;padding:0;border:1px solid #e0e0e0;border-radius:8px;background:#f9f9f9;cursor:zoom-in;overflow:hidden}
+.disease-photo-open img{display:block;width:100%;height:360px;object-fit:contain}
+.disease-photo-grid figcaption{font-size:.9rem;color:#546e5a;line-height:1.6;margin-top:8px}
+.photo-viewer{width:min(96vw,1100px);max-width:none;max-height:96vh;padding:12px;border:0;border-radius:10px;background:#fff;color:#2c3e50}
+.photo-viewer::backdrop{background:rgba(0,0,0,.85)}
+.photo-viewer img{display:block;width:100%;height:72vh;object-fit:contain;background:#f9f9f9}
+.photo-viewer-toolbar{display:flex;gap:12px;align-items:center;justify-content:space-between;margin:0 0 10px}
+.photo-viewer button{border:0;border-radius:5px;background:#2e7d32;color:#fff;padding:10px 14px;cursor:pointer;font:inherit}
+.photo-viewer-controls{display:flex;justify-content:center;gap:16px;align-items:center;margin-top:10px}
+.photo-viewer-caption{margin:8px 0;text-align:center;font-size:.9rem}
+@media(max-width:600px){.disease-photo-grid{grid-template-columns:1fr}.disease-photo-open img{height:auto;max-height:480px}.photo-viewer img{height:65vh}}
+</style>
 </head>
 <body>
 
@@ -196,6 +211,7 @@
         </table>
     </div>
 
+<section class="disease-photos" aria-labelledby="disease-photos-title"><h3 id="disease-photos-title">Hình ảnh thực tế trên lá dưa leo</h3><p>Ảnh do TAHURA cung cấp để đối chiếu các dấu hiệu trên lá. Bấm vào ảnh để xem lớn và chuyển qua các ảnh kế bên.</p><div class="disease-photo-grid"><figure><button type="button" class="disease-photo-open" data-photo="0" aria-label="Xem lớn ảnh 1: Cận cảnh bề mặt lá và các đường gân."><img src="assets/suong-mai-thuc-te-1.jpg" width="1920" height="2560" alt="Cận cảnh bề mặt lá và các đường gân." loading="lazy" decoding="async"></button><figcaption>Cận cảnh bề mặt lá và các đường gân.</figcaption></figure><figure><button type="button" class="disease-photo-open" data-photo="1" aria-label="Xem lớn ảnh 2: Tổng quan tán lá dưa leo ngoài ruộng."><img src="assets/suong-mai-thuc-te-2.jpg" width="1920" height="2560" alt="Tổng quan tán lá dưa leo ngoài ruộng." loading="lazy" decoding="async"></button><figcaption>Tổng quan tán lá dưa leo ngoài ruộng.</figcaption></figure><figure><button type="button" class="disease-photo-open" data-photo="2" aria-label="Xem lớn ảnh 3: Các đốm có phần giữa khô và viền vàng."><img src="assets/suong-mai-thuc-te-3.jpg" width="1920" height="2560" alt="Các đốm có phần giữa khô và viền vàng." loading="lazy" decoding="async"></button><figcaption>Các đốm có phần giữa khô và viền vàng.</figcaption></figure><figure><button type="button" class="disease-photo-open" data-photo="3" aria-label="Xem lớn ảnh 4: Mảng vàng nằm giữa các đường gân lá."><img src="assets/suong-mai-thuc-te-4.jpg" width="1920" height="2560" alt="Mảng vàng nằm giữa các đường gân lá." loading="lazy" decoding="async"></button><figcaption>Mảng vàng nằm giữa các đường gân lá.</figcaption></figure><figure><button type="button" class="disease-photo-open" data-photo="4" aria-label="Xem lớn ảnh 5: Vùng lá đổi màu, có phần mô khô."><img src="assets/suong-mai-thuc-te-5.jpg" width="1920" height="2560" alt="Vùng lá đổi màu, có phần mô khô." loading="lazy" decoding="async"></button><figcaption>Vùng lá đổi màu, có phần mô khô.</figcaption></figure><figure><button type="button" class="disease-photo-open" data-photo="5" aria-label="Xem lớn ảnh 6: Cận cảnh các vùng loang màu trên bề mặt lá."><img src="assets/suong-mai-thuc-te-6.jpg" width="1920" height="2560" alt="Cận cảnh các vùng loang màu trên bề mặt lá." loading="lazy" decoding="async"></button><figcaption>Cận cảnh các vùng loang màu trên bề mặt lá.</figcaption></figure></div></section>
     <div class="callout-box">
         <strong>⚠️ Cảnh báo nhầm lẫn thêm bệnh thứ 3:</strong> Nếu thấy đốm vàng góc cạnh theo gân lá nhưng <strong>tâm vết bệnh bị khô giòn, rách thủng lỗ</strong> và sáng sớm có <strong>giọt dịch nhầy trắng đục</strong> rỉ ra, đó là <strong>bệnh đốm lá vi khuẩn</strong>. Bệnh này bắt buộc phải dùng thuốc trị vi khuẩn mới hết, phun thuốc trị nấm sẽ không có tác dụng.
     </div>
@@ -336,5 +352,9 @@
     <a class="article-back" href="goc-nha-nong.html">← Về Góc nhà nông</a>
 </article>
 
+<dialog class="photo-viewer" aria-label="Xem ảnh thực tế trên lá dưa leo"><div class="photo-viewer-toolbar"><strong>Ảnh thực tế trên lá dưa leo</strong><button type="button" data-close>Đóng ×</button></div><img alt=""><p class="photo-viewer-caption"></p><div class="photo-viewer-controls"><button type="button" data-prev aria-label="Ảnh trước">← Trước</button><span aria-live="polite" data-count></span><button type="button" data-next aria-label="Ảnh tiếp theo">Tiếp →</button></div></dialog>
+<script>
+(()=>{const photos=[...document.querySelectorAll('.disease-photo-open')],viewer=document.querySelector('.photo-viewer');if(!viewer||!photos.length)return;const image=viewer.querySelector('img'),caption=viewer.querySelector('.photo-viewer-caption'),count=viewer.querySelector('[data-count]');let current=0;function show(i){current=(i+photos.length)%photos.length;const source=photos[current].querySelector('img');image.src=source.getAttribute('src');image.alt=source.alt;caption.textContent=source.alt;count.textContent=(current+1)+' / '+photos.length}photos.forEach((p,i)=>p.addEventListener('click',()=>{show(i);viewer.showModal()}));viewer.querySelector('[data-close]').addEventListener('click',()=>viewer.close());viewer.querySelector('[data-prev]').addEventListener('click',()=>show(current-1));viewer.querySelector('[data-next]').addEventListener('click',()=>show(current+1));viewer.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();show(current-1)}if(e.key==='ArrowRight'){e.preventDefault();show(current+1)}});viewer.addEventListener('click',e=>{if(e.target===viewer){const r=viewer.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)viewer.close()}})})();
+</script>
 </body>
 </html>
