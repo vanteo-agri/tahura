@@ -1,0 +1,21 @@
+/* Shared colors for articles in Góc nhà nông, matching the mildew guide. */
+body.farmer-article-page{background:#fff;color:#2c3e50}
+.farmer-article,.farmer-guides{color:#2c3e50}
+.farmer-article h1{color:#2e7d32;border-bottom:3px solid #2e7d32;padding-bottom:12px}
+.farmer-article h2,.farmer-guides h2{color:#2e7d32;border-left:6px solid #2e7d32;padding-left:10px}
+.farmer-article h3,.farmer-guides h3{color:#1b5e20}
+.farmer-article em,.farmer-guides em{color:inherit}
+.farmer-article a,.farmer-guides a{color:#1b5e20}
+.farmer-article a:hover,.farmer-guides a:hover{color:#2e7d32;text-decoration:underline}
+.farmer-article>article>p:first-of-type{color:#37474f;background:#f9f9f9;border-left:4px solid #2e7d32;padding:16px 20px;border-radius:0 8px 8px 0}
+.farmer-article nav{color:#1b5e20;background:#e8f5e9;border-left:4px solid #2e7d32;padding:12px 20px;border-radius:0 8px 8px 0}
+.farmer-article nav ol{margin:0}
+.farmer-article figure img{background:#f9f9f9}
+.farmer-article figcaption,.farmer-article .sources{color:#66736b}
+.farmer-article .callout-box,.farmer-guides .callout-box{background:#fff3e0;border-left:4px solid #ef6c00;padding:15px 20px;border-radius:0 8px 8px 0}
+.farmer-article .callout-box strong,.farmer-guides .callout-box strong{color:#ef6c00}
+.farmer-article th,.farmer-guides th{background:#2e7d32;color:#fff}
+.farmer-article td,.farmer-guides td{border-color:#e0e0e0}
+.farmer-article tr:nth-child(even),.farmer-guides tr:nth-child(even){background:#f9f9f9}
+.farmer-article tr:hover,.farmer-guides tr:hover{background:#e8f5e9}
+.farmer-guides section{background:#fff;border-top:1px solid #e0e0e0;margin-top:28px;padding:0 0 12px}
