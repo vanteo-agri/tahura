@@ -151,6 +151,22 @@ blockquote strong{color:#ef6c00}
 .tip-box strong{color:#1b5e20}
 .disclaimer-note{font-size:.9rem;color:#546e5a;background:#f9f9f9;border-left:4px solid #e0e0e0;padding:12px 16px;margin:20px 0}
 </style>
+<style>
+.disease-photo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:20px 0 28px}
+.disease-photo-grid figure{margin:0;min-width:0}
+.disease-photo-open{display:block;width:100%;padding:0;border:1px solid #e0e0e0;border-radius:8px;background:#f9f9f9;cursor:zoom-in;overflow:hidden}
+.disease-photo-open img{display:block;width:100%;height:360px;object-fit:contain}
+.disease-photo-grid figcaption{font-size:.9rem;color:#546e5a;line-height:1.6;margin-top:8px}
+.photo-viewer{width:min(96vw,1100px);max-width:none;max-height:96vh;padding:12px;border:0;border-radius:10px;background:#fff;color:#2c3e50}
+.photo-viewer::backdrop{background:rgba(0,0,0,.85)}
+.photo-viewer img{display:block;width:100%;height:72vh;object-fit:contain;background:#f9f9f9}
+.photo-viewer-toolbar{display:flex;gap:12px;align-items:center;justify-content:space-between;margin:0 0 10px}
+.photo-viewer button{border:0;border-radius:5px;background:#2e7d32;color:#fff;padding:10px 14px;cursor:pointer;font:inherit}
+.photo-viewer-controls{display:flex;justify-content:center;gap:16px;align-items:center;margin-top:10px}
+.photo-viewer-caption{margin:8px 0;text-align:center;font-size:.9rem}
+@media(max-width:600px){.disease-photo-grid{grid-template-columns:1fr}.disease-photo-open img{height:auto;max-height:480px}.photo-viewer img{height:65vh}}
+
+.whitefly-photo-single{grid-template-columns:1fr}.whitefly-photo-single .disease-photo-open img{height:440px}@media(max-width:600px){.whitefly-photo-single .disease-photo-open img{height:auto;max-height:480px}}</style>
 </head>
 <body>
 <article class="article-container">
@@ -161,7 +177,8 @@ blockquote strong{color:#ef6c00}
 
                 <p>Đáng sợ hơn, con rầy này không chỉ hút cạn nhựa cây mà còn mang theo <strong>bệnh khảm vàng lá, xoăn đọt (virus)</strong>. Dây dưa mà dính virus nặng rồi thì xịt thuốc tiên cũng không xanh lại nổi, chỉ còn nước nhổ bỏ. Hiểu rõ tánh nết của tụi nó và chọn trúng thuốc đặc trị dưới đây sẽ giúp bà con chặn đứng dịch, đỡ tốn tiền thuốc oan.</p>
 
-                <h2>1. Sao xịt rầy phấn trắng hoài mà không hết?</h2>
+                <div class="disease-photo-grid whitefly-photo-single"><figure><button type="button" class="disease-photo-open" data-photo="0" aria-label="Xem lớn ảnh: Rầy phấn trắng tập trung ở mặt dưới lá dưa leo."><img src="assets/ray-phan-trang-thuc-te-1.jpg" width="1920" height="2560" alt="Rầy phấn trắng tập trung ở mặt dưới lá dưa leo." loading="lazy" decoding="async"></button><figcaption>Rầy phấn trắng tập trung ở mặt dưới lá dưa leo. Ảnh thực tế do TAHURA cung cấp.</figcaption></figure></div>
+<h2>1. Sao xịt rầy phấn trắng hoài mà không hết?</h2>
 
                 <p>Loài phá đám dưa ở Miền Tây nhiều nhất là <em>Bemisia tabaci</em>. Bà con xịt 1 cử không bao giờ sạch là vì tụi nó có <strong>vòng đời "4 tầng" nằm chung trên một chiếc lá</strong>, mỗi tầng lại có kiểu lẩn trốn khác nhau:</p>
 
@@ -171,7 +188,8 @@ blockquote strong{color:#ef6c00}
                     <li><strong>Con trưởng thành (rầy bay):</strong> Cánh phủ bột trắng, tánh cực kỳ nhát. Hễ nghe tiếng máy xịt hay hơi thuốc là tụi nó bay ào qua mấy bụi cỏ bờ hoặc đám rẫy kế bên trốn, đợi êm êm hết mùi thuốc lại bay ngược vô đẻ tiếp.</li>
                 </ul>
 
-                <blockquote>
+                <div class="disease-photo-grid"><figure><button type="button" class="disease-photo-open" data-photo="2" aria-label="Xem lớn ảnh: Cận cảnh rầy trưởng thành và các chấm nhỏ trên mặt dưới lá."><img src="assets/ray-phan-trang-thuc-te-3.jpg" width="1920" height="2560" alt="Cận cảnh rầy trưởng thành và các chấm nhỏ trên mặt dưới lá." loading="lazy" decoding="async"></button><figcaption>Cận cảnh rầy trưởng thành và các chấm nhỏ trên mặt dưới lá. Ảnh thực tế do TAHURA cung cấp.</figcaption></figure><figure><button type="button" class="disease-photo-open" data-photo="3" aria-label="Xem lớn ảnh: Rầy trưởng thành nằm dọc các đường gân lá."><img src="assets/ray-phan-trang-thuc-te-4.jpg" width="1920" height="2560" alt="Rầy trưởng thành nằm dọc các đường gân lá." loading="lazy" decoding="async"></button><figcaption>Rầy trưởng thành nằm dọc các đường gân lá. Ảnh thực tế do TAHURA cung cấp.</figcaption></figure></div>
+<blockquote>
                     <strong>Lý do 3 ngày sau rầy lại bay đầy giàn:</strong> Gặp nắng nóng Miền Tây từ 30 đến 35°C, rầy sinh sản lẹ lắm, nguyên vòng đời chỉ tốn khoảng <strong>15 đến 21 ngày</strong>. Nếu bà con chỉ xịt thuốc diệt con đang bay, đúng <strong>3 đến 5 ngày sau</strong> mớ trứng với nhộng giả nằm dưới lá nở đồng loạt, lại ra một lớp rầy mới dày đặc y như cũ.
                 </blockquote>
 
@@ -183,7 +201,8 @@ blockquote strong{color:#ef6c00}
                     <li><strong>Truyền bệnh Virus (Khảm vàng lá, xoăn ngọn):</strong> Đây mới là cái làm bà con mất trắng. Chỉ cần vài con rầy mang mầm bệnh chích vô ngọn là mấy ngày sau lá dưa loang lổ xanh vàng, gân lá nổi cộm, đọt sượng cứng không bò nổi, trái sần sùi và bị đắng.</li>
                 </ol>
 
-                <h2>2. Tại sao rầy phấn trắng lại hay bùng dịch dữ dội ở Miền Tây?</h2>
+                <div class="disease-photo-grid whitefly-photo-single"><figure><button type="button" class="disease-photo-open" data-photo="4" aria-label="Xem lớn ảnh: Ngọn dưa có lá co lại và màu lá không đồng đều."><img src="assets/ray-phan-trang-thuc-te-5.jpg" width="1920" height="3413" alt="Ngọn dưa có lá co lại và màu lá không đồng đều." loading="lazy" decoding="async"></button><figcaption>Ngọn dưa có lá co lại và màu lá không đồng đều. Ảnh thực tế do TAHURA cung cấp.</figcaption></figure></div>
+<h2>2. Tại sao rầy phấn trắng lại hay bùng dịch dữ dội ở Miền Tây?</h2>
 
                 <p>Bà con trồng màu lâu năm ở Đồng Tháp, An Giang, Vĩnh Long hay Cần Thơ chắc đều thấy rõ: cứ tới mùa nắng là rầy phấn trắng bùng lên như nấm. Nguyên nhân nằm ở 4 chuyện rất quen thuộc ngoài ruộng:</p>
 
@@ -194,7 +213,8 @@ blockquote strong{color:#ef6c00}
                     <li><strong>Đi phân Urê hơi nặng tay:</strong> Nhiều bà con thích ép dây leo lẹ nên bón thúc nhiều đạm. Lá dưa bung ra xanh mướt, mỏng dờn, mùi nhựa thơm đúng "gu" dụ rầy phấn trắng kéo tới đẻ trứng gấp mấy lần đám dưa bón phân cân đối.</li>
                 </ul>
 
-                <h2>3. Các hoạt chất đặc trị rầy phấn trắng (Kèm tên thuốc phổ biến)</h2>
+                <div class="disease-photo-grid whitefly-photo-single"><figure><button type="button" class="disease-photo-open" data-photo="5" aria-label="Xem lớn ảnh: Cận cảnh hình dạng và lớp cánh trắng của rầy trưởng thành."><img src="assets/ray-phan-trang-thuc-te-6.jpg" width="1920" height="3413" alt="Cận cảnh hình dạng và lớp cánh trắng của rầy trưởng thành." loading="lazy" decoding="async"></button><figcaption>Cận cảnh hình dạng và lớp cánh trắng của rầy trưởng thành. Ảnh thực tế do TAHURA cung cấp.</figcaption></figure></div>
+<h2>3. Các hoạt chất đặc trị rầy phấn trắng (Kèm tên thuốc phổ biến)</h2>
 
                 <p>Rầy phấn trắng nổi tiếng là <strong>lờn thuốc lẹ nhất nhì trong các loài sâu rầy</strong>. Để trị cho dứt, bà con cần nắm rõ nhóm nào chuyên <strong>làm ung trứng, diệt ấu trùng</strong> và nhóm nào chuyên <strong>diệt con trưởng thành</strong>, đồng thời chịu khó đổi hoạt chất sau mỗi cử xịt.</p>
 
@@ -310,9 +330,14 @@ blockquote strong{color:#ef6c00}
                     (Lưu ý: Tên thương mại trong bảng là các dòng phổ biến giúp bà con dễ tìm mua. Trước khi pha xịt, bà con nhớ coi kỹ liều lượng và số ngày cách ly in trên chai/gói để đảm bảo an toàn, nhất là lúc dưa đang vô đợt hái trái mỗi ngày).
                 </div>
 
-                <div class="tip-box">
+                <div class="disease-photo-grid whitefly-photo-single"><figure><button type="button" class="disease-photo-open" data-photo="1" aria-label="Xem lớn ảnh: Rầy xuất hiện dày ở nhiều vị trí trên mặt dưới lá."><img src="assets/ray-phan-trang-thuc-te-2.jpg" width="1920" height="2560" alt="Rầy xuất hiện dày ở nhiều vị trí trên mặt dưới lá." loading="lazy" decoding="async"></button><figcaption>Rầy xuất hiện dày ở nhiều vị trí trên mặt dưới lá. Ảnh thực tế do TAHURA cung cấp.</figcaption></figure></div>
+<div class="tip-box">
                     <strong>Mẹo nhỏ để xịt 2 cử là êm đám dưa:</strong> Mỗi lần xịt trị, bà con nên <strong>đánh cặp 1 thuốc diệt con bay (Nhóm 2 hoặc 3) cộng chung với 1 thuốc ung trứng/diệt ấu trùng (Nhóm 1)</strong> — ví dụ <em>Sivanto Prime</em> hoặc <em>Oshin</em> cộng <em>Movento</em> hay <em>Pyriproxyfen</em>. Chịu khó dậy sớm <strong>xịt từ 5h30 tới 7h30 sáng</strong> lúc sương còn ướt cánh rầy chưa bay nổi, đưa cần phun ngửa từ dưới lá lên cho ướt đều mặt dưới, rồi <strong>đúng 4 đến 5 ngày sau đổi sang hoạt chất khác xịt bồi thêm 1 cử nữa</strong> là cắt đứt gọn gàng vòng đời của tụi nó.
                 </div>
 <a class="article-back" href="goc-nha-nong.html">← Về Góc nhà nông</a>
 </article>
+<dialog class="photo-viewer" aria-label="Xem ảnh thực tế rầy phấn trắng"><div class="photo-viewer-toolbar"><strong>Ảnh thực tế rầy phấn trắng</strong><button type="button" data-close>Đóng ×</button></div><img alt=""><p class="photo-viewer-caption"></p><div class="photo-viewer-controls"><button type="button" data-prev aria-label="Ảnh trước">← Trước</button><span aria-live="polite" data-count></span><button type="button" data-next aria-label="Ảnh tiếp theo">Tiếp →</button></div></dialog>
+<script>
+(()=>{const photos=[...document.querySelectorAll('.disease-photo-open')],viewer=document.querySelector('.photo-viewer');if(!viewer||!photos.length)return;const image=viewer.querySelector('img'),caption=viewer.querySelector('.photo-viewer-caption'),count=viewer.querySelector('[data-count]');let current=0;function show(i){current=(i+photos.length)%photos.length;const source=photos[current].querySelector('img');image.src=source.getAttribute('src');image.alt=source.alt;caption.textContent=source.alt;count.textContent=(current+1)+' / '+photos.length}photos.forEach((p,i)=>p.addEventListener('click',()=>{show(i);viewer.showModal()}));viewer.querySelector('[data-close]').addEventListener('click',()=>viewer.close());viewer.querySelector('[data-prev]').addEventListener('click',()=>show(current-1));viewer.querySelector('[data-next]').addEventListener('click',()=>show(current+1));viewer.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();show(current-1)}if(e.key==='ArrowRight'){e.preventDefault();show(current+1)}});viewer.addEventListener('click',e=>{if(e.target===viewer){const r=viewer.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)viewer.close()}})})();
+</script>
 </body></html>
